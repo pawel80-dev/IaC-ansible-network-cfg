@@ -2,13 +2,21 @@
 
 ### Ansible instalation - local machine (Ubuntu 26.04)  
 1. Create a local virtual environment  
-$ python3 -m venv .venv  
+```
+$ python3 -m venv .venv
+```
 2. Activate local environment  
-$ source .venv/bin/activate  
+```
+$ source .venv/bin/activate
+```
 3. Install Ansible with prefered SSH library  
-$ python3 -m pip install ansible ansible-pylibssh  
+```
+$ python3 -m pip install ansible ansible-pylibssh
+```
 4. run the playbook  
-$ python3 -m ansible playbook -i inventory/hosts.yaml playbooks/cisco_test.yaml -vvv  
+```
+$ python3 -m ansible playbook -i inventory/hosts.yaml playbooks/cisco_test.yaml -vvv
+```
 
 ### Cisco device - initial config  
 ```
