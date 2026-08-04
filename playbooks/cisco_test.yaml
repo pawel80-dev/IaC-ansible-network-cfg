@@ -10,3 +10,19 @@
           - description ANS-TEST-INTERFACE
           - ip address 172.31.1.1 255.255.255.0
         parents: interface GigabitEthernet4
+
+    - name: Disable http services
+      cisco.ios.ios_config:
+        lines:
+          - no ip http server
+          - no ip http secure-server
+
+    - name: Disable small services
+      cisco.ios.ios_config:
+        lines:
+          - no service tcp-small-servers
+          - no service udp-small-servers
+
+    - name: Save running config to startup config (when modified)
+      cisco.ios.ios_config:
+        save_when: modified
