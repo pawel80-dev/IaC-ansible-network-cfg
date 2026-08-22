@@ -22,7 +22,15 @@ source .venv/bin/activate
 ```
 python3 -m pip install ansible ansible-pylibssh
 ```
-4. run the playbook  
+4. If necessary, add Ansible collection  
+```
+ansible-galaxy collection install cisco.ise
+```
+5. Verify installed collections  
+```
+ansible-galaxy collection list | grep cisco
+```
+6. Run the playbook  
 ```
 python3 -m ansible playbook -i inventory/hosts.yaml playbooks/cisco_test.yaml -vvv
 ```
