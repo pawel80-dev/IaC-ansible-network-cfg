@@ -1,14 +1,14 @@
 all:
-  routers:
-    hosts:
-      cisco_router1: 192.168.12.11
-        # ansible_user: ans_local
-        # ansible_password: Ansible123
-        # ansible_connection: network_cli
-        # ansible_network_os: cisco.ios.ios
-
-      cisco_router2: 192.168.12.12
-        # ansible_user: ans_local
-        # ansible_password: Ansible123
-        # ansible_connection: network_cli
-        # ansible_network_os: cisco.ios.ios
+  children:
+    routers:
+      hosts:
+        cisco_router1: 192.168.12.11
+          # ansible_user: ans_local
+          # ansible_password: Ansible123
+          # ansible_connection: network_cli
+          # ansible_network_os: cisco.ios.ios
+        cisco_router2: 192.168.12.12
+          # ansible_user: ans_local
+          # ansible_password: Ansible123
+          # ansible_connection: network_cli
+          # ansible_network_os: cisco.ios.ios
