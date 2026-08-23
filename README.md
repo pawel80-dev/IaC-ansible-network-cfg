@@ -40,7 +40,7 @@ ansible-playbook -i inventory/hosts.yaml playbooks/cisco_test.yaml
 ```  
 
 > [!NOTE]
-> In our case, *group_vars* must be in the same directory as the inventory file or the playbook.    
+> In our case, **group_vars** folder must be in the same directory as the inventory file or the playbook(s) file.    
 
 ### Cisco device - initial config  
 ```
