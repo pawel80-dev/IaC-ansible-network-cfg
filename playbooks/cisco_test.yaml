@@ -4,12 +4,12 @@
   gather_facts: false
 
   tasks:
-    - name: Configure interface
+    - name: Add Loopback interface
       cisco.ios.ios_config:
         lines:
           - description ANS-TEST-INTERFACE
-          - ip address 172.31.1.1 255.255.255.0
-        parents: interface GigabitEthernet4
+          - ip address 1.1.1.1 255.255.255.255
+        parents: interface Loopback0
 
     - name: Disable http services
       cisco.ios.ios_config:
