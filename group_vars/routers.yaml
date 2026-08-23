@@ -1,4 +1,3 @@
----
 ansible_user: ans_local
 ansible_password: Ansible123
 ansible_connection: network_cli
