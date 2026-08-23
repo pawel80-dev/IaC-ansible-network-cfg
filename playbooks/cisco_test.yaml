@@ -32,7 +32,7 @@
     - name: Set hostname
       cisco.ios.ios_hostname:
         config:
-          hostname: "{{ inventory_hostname }}["hostname"]"
+          hostname: "{{ inventory_hostname }}"
         state: merged
 
     - name: Save running config to startup config (when modified)
