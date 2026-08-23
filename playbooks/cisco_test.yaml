@@ -10,10 +10,13 @@
       ansible.builtin.debug:
         msg: "The current inventory is: {{ inventory_hostname }}, hostname: {{ hostname }}"
 
+    # - name: Generate a random string with 1 lower, 1 upper, 1 number and 1 special char (at least), length 12
+    #   ansible.builtin.debug:
+    #     var: lookup("community.general.random_string", min_lower=1, min_upper=1, min_special=1, min_numeric=1, length=12)
+
     - name: Generate a random string with 1 lower, 1 upper, 1 number and 1 special char (at least), length 12
-      ansible.builtin.debug:
-        var: lookup("community.general.random_string", min_lower=1, min_upper=1, min_special=1, min_numeric=1, length=12)
-        register: var_random_string
+      set_fact:
+        var_random_string: lookup("community.general.random_string", min_lower=1, min_upper=1, min_special=1, min_numeric=1, length=12)
 
     - name: Random string display
       ansible.builtin.debug:
