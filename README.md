@@ -33,8 +33,11 @@ ansible-galaxy collection list | grep cisco
 6. Run the playbook  
 ```
 python3 -m ansible playbook -i inventory/hosts.yaml playbooks/cisco_test.yaml -vvv
+```  
+Alternatively:  
 ```
-
+ansible-playbook -i inventory/hosts.yaml playbooks/cisco_test.yaml
+```
 ### Cisco device - initial config  
 ```
 !
