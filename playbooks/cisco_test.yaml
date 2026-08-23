@@ -24,6 +24,12 @@
           - no service tcp-small-servers
           - no service udp-small-servers
 
+    - name: Set hostname
+      cisco.ios.ios_hostname:
+        config:
+          hostname: cisco_router1["hostname"]
+        state: merged
+
     - name: Save running config to startup config (when modified)
       cisco.ios.ios_config:
         save_when: modified
