@@ -5,6 +5,11 @@
   gather_facts: false
 
   tasks:
+
+    - name: Print the current hostname
+      ansible.builtin.debug:
+        msg: "The current host is: {{ inventory_hostname }}"
+
     - name: Add Loopback interface
       cisco.ios.ios_config:
         lines:
@@ -27,7 +32,7 @@
     - name: Set hostname
       cisco.ios.ios_hostname:
         config:
-          hostname: cisco_router1["hostname"]
+          hostname: cisco_router1.hostname
         state: merged
 
     - name: Save running config to startup config (when modified)
