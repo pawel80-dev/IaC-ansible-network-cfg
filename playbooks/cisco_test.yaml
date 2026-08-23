@@ -38,7 +38,7 @@
     - name: Add local user
       cisco.ios.ios_config:
         lines:
-          - username NEW-{{ hostname }}-OK privilege 15 secret PASSWORD123456
+          - username NEW-{{ hostname }}-OK privilege 15 secret SOMESECRETPASSWORD
 
     - name: Save running config to startup config (when modified)
       cisco.ios.ios_config:
