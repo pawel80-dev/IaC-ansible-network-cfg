@@ -9,6 +9,7 @@
     - name: Print the current hostname
       ansible.builtin.debug:
         msg: "The current host is: {{ inventory_hostname }}"
+        msg: "The current host is: {{ hostname }}"
 
     - name: Add Loopback interface
       cisco.ios.ios_config:
