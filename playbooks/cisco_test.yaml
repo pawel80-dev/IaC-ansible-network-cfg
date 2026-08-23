@@ -13,10 +13,11 @@
     - name: Generate a random string with 1 lower, 1 upper, 1 number and 1 special char (at least), length 12
       ansible.builtin.debug:
         var: lookup("community.general.random_string", min_lower=1, min_upper=1, min_special=1, min_numeric=1, length=12)
+        register: var_random_string
 
     - name: Random string display
       ansible.builtin.debug:
-        msg: "Random string is: {{ var }}"
+        msg: "Random string is: {{ var_random_string }}"
 
     - name: Add Loopback interface
       cisco.ios.ios_config:
