@@ -64,7 +64,10 @@ Encrypt existing file:
 ```
 ansible-vault encrypt group_vars/all.yaml
 ``` 
-
+Run playbook with password prompt:  
+```
+ansible-playbook -i inventory/hosts.yaml playbooks/cisco_test.yaml --ask-vault-pass
+```  
 
 ### Cisco ISE
 
