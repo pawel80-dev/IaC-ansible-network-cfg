@@ -1,29 +1,23 @@
 ---
 all:
   children:
-    europe:
-      children:
-        site1:
-          hosts:
-            cisco_router1:
-              ansible_host: 192.168.12.11
-              hostname: RTR1
-            cisco_router2:
-              ansible_host: 192.168.12.12
-              hostname: RTR2
-
-    north_america:
-      children:
-        site2:
-          hosts:
-            cisco_router3:
-              ansible_host: 192.168.12.13
-              hostname: RTR3
-
-    south_america:
-      children:
-        site3:
-          hosts:
-            cisco_router4:
-              ansible_host: 192.168.12.14
-              hostname: RTR4
+    site1:
+      hosts:
+        router1:
+          ansible_host: 192.168.12.11
+          hostname: RTR1
+        router2:
+          ansible_host: 192.168.12.12
+          hostname: RTR2
+  children:
+    site2:
+      hosts:
+        router3:
+          ansible_host: 192.168.12.13
+          hostname: RTR3
+  children:
+    site3:
+      hosts:
+        router4:
+          ansible_host: 192.168.12.14
+          hostname: RTR4

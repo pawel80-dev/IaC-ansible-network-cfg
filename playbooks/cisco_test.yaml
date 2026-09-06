@@ -40,7 +40,7 @@
     - name: Set hostname
       cisco.ios.ios_hostname:
         config:
-          hostname: "{{ hostname }}"
+          hostname: "{{ inventory_hostname | upper }}"
         state: merged
 
     - name: Add local user
