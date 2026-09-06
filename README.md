@@ -2,7 +2,11 @@
 
 ### Ansible instalation - official guide  
 
-[Ansible Community Documentation](https://docs.ansible.com/projects/ansible/latest/installation_guide/intro_installation.html)
+[Ansible installation Community Documentation](https://docs.ansible.com/projects/ansible/latest/installation_guide/intro_installation.html)  
+
+[Ansible YAML inventory](https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/yaml_inventory.html)  
+
+[Ansible patterns / inventory limits](https://docs.ansible.com/projects/ansible/latest/inventory_guide/intro_patterns.html)  
 
 Use pip in your selected Python environment to install the full Ansible package for the current user:
 ```
