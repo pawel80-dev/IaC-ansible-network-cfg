@@ -3,21 +3,21 @@ all:
   children:
     site1:
       hosts:
-        router1:
+        router_1:
           ansible_host: 192.168.12.11
           hostname: RTR1
-        router2:
+        router_2:
           ansible_host: 192.168.12.12
           hostname: RTR2
-  children:
+
     site2:
       hosts:
-        router3:
+        router_3:
           ansible_host: 192.168.12.13
           hostname: RTR3
-  children:
+
     site3:
       hosts:
-        router4:
+        router_4:
           ansible_host: 192.168.12.14
           hostname: RTR4
