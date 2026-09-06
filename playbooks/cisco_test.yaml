@@ -8,7 +8,7 @@
 
     - name: Print the current hostname
       ansible.builtin.debug:
-        msg: "The current inventory is: {{ inventory_hostname }}, hostname: {{ hostname }}"
+        msg: "The current inventory hostname is: {{ inventory_hostname }}, some variable: {{ some_var }}"
 
     - name: Generate a random string with 1 lower, 1 upper, 1 number and 1 special char (at least), length 12
       set_fact:
@@ -22,7 +22,7 @@
       cisco.ios.ios_config:
         lines:
           - description ANS-TEST-INTERFACE
-          - ip address 1.1.1.1 255.255.255.255
+          - ip address {{ loopback_ip }} 255.255.255.255
         parents: interface Loopback0
 
     - name: Disable http services
@@ -46,7 +46,7 @@
     - name: Add local user
       cisco.ios.ios_config:
         lines:
-          - username NEW-{{ hostname }}-OK privilege 15 secret SOMESECRETPASSWORD
+          - username NEW-{{ some_var }}-OK privilege 15 secret SOMESECRETPASSWORD
 
     - name: Save running config to startup config (when modified)
       cisco.ios.ios_config:
