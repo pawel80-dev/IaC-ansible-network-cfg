@@ -43,10 +43,17 @@ ansible-playbook -i inventory/hosts.yaml playbooks/cisco_test.yaml
 > In our case, **group_vars** folder must be in the same directory as the inventory file or the playbook(s) file.  
 
 > [!NOTE]
+> inventory: children groups and hosts must be unique!  
+
+> [!NOTE]
 > Limit inventory to a single host:  
 > ```
 > ansible-playbook -i inventory/hosts.yaml playbooks/cisco_test.yaml --limit cisco_router1
 > ```  
+> Limit inventory to a single group:  
+> ```
+> ansible-playbook -i inventory/hosts.yaml playbooks/cisco_test.yaml --limit site1
+> ``` 
 
 ### Cisco ISE
 
