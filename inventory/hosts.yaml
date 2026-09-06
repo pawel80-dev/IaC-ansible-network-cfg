@@ -1,6 +1,7 @@
 ---
 all:
   children:
+
     site1:
       hosts:
         router_1:
