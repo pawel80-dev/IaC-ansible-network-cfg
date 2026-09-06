@@ -57,7 +57,14 @@ ansible-playbook -i inventory/hosts.yaml playbooks/cisco_test.yaml
 > Limit inventory to a single group:  
 > ```
 > ansible-playbook -i inventory/hosts.yaml playbooks/cisco_test.yaml --limit site1
-> ``` 
+> ```  
+
+### Ansible Vault  
+Encrypt existing file:  
+```
+ansible-vault encrypt group_vars/all.yaml
+``` 
+
 
 ### Cisco ISE
 
