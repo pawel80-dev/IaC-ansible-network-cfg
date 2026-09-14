@@ -2,4 +2,4 @@
 ise_servers:
   hosts:
     ise_server_1:
-      ansible_host: 1.2.3.4
+      ansible_host: 192.168.12.98
