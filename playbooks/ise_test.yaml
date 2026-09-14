@@ -1,8 +1,7 @@
 ---
-- name: Add Network Device to ISE
-  hosts: ise_servers
-  gather_facts: false
-  
+- hosts: ise_servers
+  gather_facts: no
+
   tasks:
     - name: Add Network Device to ISE
       cisco.ise.network_device:
