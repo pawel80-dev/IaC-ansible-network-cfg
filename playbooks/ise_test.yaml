@@ -1,19 +1,23 @@
 ---
-- name: Configure Cisco ISE
-  # hosts: cisco_router1
-  hosts: routers
+- name: Add Network Device to ISE
+  hosts: all
   gather_facts: false
-
+  
   tasks:
-
-    - name: Print the current hostname
-      ansible.builtin.debug:
-        msg: "The current inventory is: {{ inventory_hostname }}, hostname: {{ hostname }}"
-
-    - name: Generate a random string with 1 lower, 1 upper, 1 number and 1 special char (at least), length 12
-      set_fact:
-        var_random_string: "{{ lookup('community.general.random_string', min_lower=1, min_upper=1, min_special=1, min_numeric=1, length=12) }}"
-
-    - name: Random string display
-      ansible.builtin.debug:
-        msg: "Random string is: {{ var_random_string }}"
+    - name: Add Network Device to ISE
+      cisco.ise.network_device:
+        ise_hostname: "{{ ise_hostname }}"
+        ise_username: "{{ ise_username }}"
+        ise_password: "{{ ise_password }}"
+        ise_verify: false
+        state: present
+        name: "Switch-01"
+        description: "Added via Ansible"
+        NetworkDeviceIPList:
+          - ipaddress: "192.168.10.5"
+            mask: 32
+        NetworkDeviceGroupList:
+          - "Location#All Locations"
+          - "Device Type#All Device Types"
+        authenticationSettings:
+          radiusSharedSecret: "YourSecureRadiusSecret123"

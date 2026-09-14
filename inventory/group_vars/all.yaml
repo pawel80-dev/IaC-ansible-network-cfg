@@ -4,3 +4,6 @@ ansible_connection: network_cli
 ansible_network_os: cisco.ios.ios
 admin_user: admin
 admin_password: Cisco123
+ise_hostname: "192.168.12.98"
+ise_username: "ersadmin"
+ise_password: "Cisco123"
