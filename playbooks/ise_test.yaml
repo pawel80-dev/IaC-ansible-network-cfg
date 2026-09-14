@@ -8,6 +8,7 @@
         # ise_hostname: "{{ ise_hostname }}"
         # ise_username: "{{ ise_username }}"
         # ise_password: "{{ ise_password }}"
+        ise_hostname: "192.168.12.98"
         ise_username: "ersadmin"
         ise_password: "Cisco123"
         ise_verify: False
