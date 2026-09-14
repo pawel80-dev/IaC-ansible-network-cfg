@@ -63,7 +63,11 @@ ansible-playbook -i inventory/hosts.yaml playbooks/cisco_test.yaml
 Encrypt existing file:  
 ```
 ansible-vault encrypt group_vars/all.yaml
-``` 
+```  
+Decrypt existing file:  
+```
+ansible-vault decrypt group_vars/all.yaml
+```  
 Run playbook with password prompt:  
 ```
 ansible-playbook -i inventory/hosts.yaml playbooks/cisco_test.yaml --ask-vault-pass
