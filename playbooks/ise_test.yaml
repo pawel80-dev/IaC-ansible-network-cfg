@@ -5,9 +5,11 @@
   tasks:
     - name: Add Network Device to ISE
       cisco.ise.network_device:
-        ise_hostname: "{{ ise_hostname }}"
-        ise_username: "{{ ise_username }}"
-        ise_password: "{{ ise_password }}"
+        # ise_hostname: "{{ ise_hostname }}"
+        # ise_username: "{{ ise_username }}"
+        # ise_password: "{{ ise_password }}"
+        ise_username: "ersadmin"
+        ise_password: "Cisco123"
         ise_verify: False
         ise_debug: True
         state: present
