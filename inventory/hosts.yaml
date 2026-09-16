@@ -2,7 +2,7 @@
 all:
   children:
 
-    site1:
+    SITE1:
       hosts:
         router_1:
           ansible_host: 192.168.12.11
@@ -13,14 +13,14 @@ all:
           some_var: RTR2
           loopback_ip: 1.1.1.2
 
-    site2:
+    SITE2:
       hosts:
         router_3:
           ansible_host: 192.168.12.13
           some_var: RTR3
           loopback_ip: 1.1.1.3
 
-    site3:
+    SITE3:
       hosts:
         router_4:
           ansible_host: 192.168.12.14
