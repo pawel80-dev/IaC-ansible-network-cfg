@@ -13,7 +13,7 @@
           SITE_ID: {{ group_names[0] }},
           The current inventory hostname is: {{ inventory_hostname }},
           some variable: {{ some_var }},
-          GROUP_VARs: {{ hostvars[group_names[0]] }},
+          GROUP_VARs: {{ hostvars[inventory_hostname] }},
           "
 
     - name: Generate a random string with 1 lower, 1 upper, 1 number and 1 special char (at least), length 12
