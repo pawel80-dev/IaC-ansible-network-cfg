@@ -58,6 +58,10 @@ ansible-playbook -i inventory/hosts.yaml playbooks/cisco_test.yaml
 > ```
 > ansible-playbook -i inventory/hosts.yaml playbooks/cisco_test.yaml --limit site1
 > ```  
+> Dry-Run (Check Mode. Ansible will simulate the execution, reporting what changes it would have made):  
+> ```  
+> ansible-playbook -i inventory/hosts.yaml playbooks/cisco_test.yaml --limit site1
+> ```  
 
 ### Ansible Vault  
 Encrypt existing file:  
