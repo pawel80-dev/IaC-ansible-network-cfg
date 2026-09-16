@@ -6,7 +6,7 @@
 
   tasks:
 
-    - name: Print the current hostname
+    - name: Print variables
       ansible.builtin.debug:  
         msg:
           - "SITE_ID: {{ group_names[0] }}"
