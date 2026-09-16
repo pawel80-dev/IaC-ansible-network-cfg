@@ -8,13 +8,11 @@
 
     - name: Print the current hostname
       ansible.builtin.debug:  
-        msg: |
-          "
-          SITE_ID: {{ group_names[0] }},
-          The current inventory hostname is: {{ inventory_hostname }},
-          some variable: {{ some_var }},
-          GROUP_VARs: {{ tacacs_source | default('NOT Defined') }},
-          "
+        msg:
+          - "SITE_ID: {{ group_names[0] }}"
+          - "The current inventory hostname is: {{ inventory_hostname }}"
+          - "some variable: {{ some_var }}"
+          - "GROUP_VARs: {{ tacacs_source | default('NOT Defined') }}"
 
     - name: Generate a random string with 1 lower, 1 upper, 1 number and 1 special char (at least), length 12
       set_fact:
