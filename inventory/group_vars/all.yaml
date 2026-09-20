@@ -7,5 +7,3 @@ admin_password: Cisco123
 ise_hostname: "192.168.12.98"
 ise_username: "ersadmin"
 ise_password: "Cisco123"
-ansible_local_user: "ans_local"
-ansible_local_password: "Ansible123"
