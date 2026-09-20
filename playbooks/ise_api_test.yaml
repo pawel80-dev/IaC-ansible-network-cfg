@@ -60,7 +60,7 @@
               }
             }
           }
-        status_code: [200, 201]
+        status_code: [200, 201, 400]
       register: ise_new_device_response
 
     - name: Error handling
