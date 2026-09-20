@@ -85,9 +85,9 @@
       cisco.ios.ios_config:
         lines:
           - aaa new-model
+          # - aaa authentication login default local
+          # - aaa authorization exec default local
           - aaa authorization console
-          - aaa authentication login default local
-          - aaa authorization exec default local
           - aaa authentication login AAA_LIST group AAA_SERVERS local
           - aaa authorization exec AAA_LIST group AAA_SERVERS local 
           - aaa authorization commands 15 AAA_LIST group AAA_SERVERS local
