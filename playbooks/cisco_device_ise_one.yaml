@@ -70,7 +70,6 @@
         name: test_local_user
         configured_password: Test123
         privilege: 15
-        nopassword: false
         password_type: secret
         state: present
 
