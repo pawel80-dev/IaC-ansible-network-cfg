@@ -10,13 +10,6 @@
       vars:
         special_list: "!@#$%^&*()-_+=[]{}:./"
 
-    # - name: Print variables
-    #   ansible.builtin.debug:  
-    #     msg:
-    #       SITE_ID: "{{ group_names[0] }}"
-    #       INVENTORY HOSTNAME: "{{ inventory_hostname }}"
-    #       RANDOM STRING: "{{ var_random_string }}"
-
     - name: Add network device to ISE
       ansible.builtin.uri:
         url: "https://10.12.0.98:9060/ers/config/networkdevice"
@@ -70,6 +63,41 @@
           INVENTORY HOSTNAME: "{{ inventory_hostname }}"
           # RANDOM STRING: "{{ hostvars[inventory_hostname].var_random_string }}"
           RANDOM STRING: "{{ var_random_string }}"
+          TACACS SOURCE: "{{ tacacs_source | default('Source interface not defined') }}"
+
+    - name: Add local users
+      cisco.ios.ios_config:
+        lines:
+          - "username {{ ansible_local_user }} privilege 15 secret {{ ansible_local_password }}"
+
+    - name: Add TACACS+
+      cisco.ios.ios_config:
+        lines:
+          - aaa group server tacacs+ AAA_SERVERS
+          - server-private 192.168.12.98 key {{ var_random_string }}
+          - ip tacacs source-interface {{ tacacs_source }}
+
+    - name: Add AAA
+      cisco.ios.ios_config:
+        lines:
+          - aaa new-model
+          - aaa authorization console
+          - aaa authentication login default local
+          - aaa authorization exec default local
+          - aaa authentication login AAA_LIST group AAA_SERVERS local
+          - aaa authorization exec AAA_LIST group AAA_SERVERS local 
+          - aaa authorization commands 15 AAA_LIST group AAA_SERVERS local
+
+    - name: Configure VTY lines
+      cisco.ios.ios_config:
+        lines:
+          - transport input ssh
+          - authorization commands 15 AAA_LIST
+          - authorization exec AAA_LIST
+          - login authentication AAA_LIST
+          # - exec-timeout 30 0
+          # - access-class VTY_ACCESS in
+        parents: line vty 0 4
 
     - name: Save running config to startup config (when modified)
       cisco.ios.ios_config:
