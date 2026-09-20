@@ -66,7 +66,7 @@
         msg:
           SITE_ID: "{{ group_names[0] }}"
           INVENTORY HOSTNAME: "{{ inventory_hostname }}"
-          RANDOM STRING: "{{ var_random_string }}"
+          RANDOM STRING: "{{ hostvars[inventory_hostname].var_random_string }}"
 
     - name: Save running config to startup config (when modified)
       cisco.ios.ios_config:
