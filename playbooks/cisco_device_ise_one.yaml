@@ -1,6 +1,6 @@
 ---
 - name: Add network device to ISE
-  hosts: localhost
+  hosts: all
   gather_facts: false
 
   tasks:
