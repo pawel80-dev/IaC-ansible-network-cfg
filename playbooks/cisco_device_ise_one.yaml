@@ -1,6 +1,6 @@
 ---
 - name: Add network device to ISE and add AAA config to device
-  hosts: localhost
+  hosts: all
   gather_facts: false
 
   tasks:
