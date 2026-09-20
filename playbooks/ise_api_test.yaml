@@ -5,7 +5,6 @@
   tasks:
     - name: Call local Cisco ISE API
       ansible.builtin.uri:
-        # url: "https://api.github.com/repos/ansible/ansible"
         url: "https://10.12.0.98:9060/ers/config/networkdevice"
         user: "ersadmin"
         password: "Cisco123"
@@ -17,9 +16,24 @@
           User-Agent: Ansible-Playbook
       register: ise_response
 
+    - name: Device API call
+      ansible.builtin.uri:
+        url: "https://10.12.0.98:9060/ers/config/networkdevice/name/RT2_IOSv"
+        user: "ersadmin"
+        password: "Cisco123"
+        method: GET
+        return_content: true
+        validate_certs: no
+        headers:
+          Accept: application/json
+          User-Agent: Ansible-Playbook
+      register: ise_device_response
+
     - name: Show response status
       ansible.builtin.debug:
-        msg: "Status: {{ ise_response.status }}, Content-Type: {{ ise_response.content_type }}"
+        msg: 
+          General response status: "{{ ise_response.status }}"
+          Device response status: "{{ ise_device_response.status }}"
 
     # - name: Access parsed JSON data
     #   ansible.builtin.debug:
