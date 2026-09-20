@@ -1,0 +1,26 @@
+# Makes a GET request to a REST API and displays the parsed response
+- name: Basic API call
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Call GitHub API
+      ansible.builtin.uri:
+        url: "https://api.github.com/repos/ansible/ansible"
+        method: GET
+        return_content: true
+        headers:
+          Accept: application/json
+          User-Agent: Ansible-Playbook
+      register: github_response
+
+    - name: Show response status
+      ansible.builtin.debug:
+        msg: "Status: {{ github_response.status }}, Content-Type: {{ github_response.content_type }}"
+
+    - name: Access parsed JSON data
+      ansible.builtin.debug:
+        msg:
+          name: "{{ github_response.json.full_name }}"
+          stars: "{{ github_response.json.stargazers_count }}"
+          language: "{{ github_response.json.language }}"
