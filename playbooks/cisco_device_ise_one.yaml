@@ -66,9 +66,7 @@
           TACACS SOURCE: "{{ tacacs_source | default('Source interface not defined') }}"
 
     - name: Add local users
-      cisco.ios.ios_config:
-        lines:
-          - "username {{ ansible_local_user }} privilege 15 secret {{ ansible_local_password }}"
+      cisco.ios.ios_config: username test_user privilege 15 secret Test123
 
     - name: Add TACACS+
       cisco.ios.ios_config:
