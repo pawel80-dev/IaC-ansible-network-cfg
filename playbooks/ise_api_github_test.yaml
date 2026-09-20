@@ -1,4 +1,5 @@
 # Makes a GET request to a REST API and displays the parsed response
+---
 - name: Basic API call
   hosts: localhost
   gather_facts: false

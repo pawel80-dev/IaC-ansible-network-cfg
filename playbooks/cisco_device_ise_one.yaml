@@ -1,0 +1,60 @@
+---
+- name: Add network device to ISE and add AAA config to device
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Generate a random string with 1 lower, 1 upper, 1 number and 1 special char (at least), length 12
+      set_fact:
+        var_random_string: "{{ lookup('community.general.random_string', min_lower=1, min_upper=1, min_special=1, min_numeric=1, length=12) }}"
+
+    - name: Random string display
+      ansible.builtin.debug:
+        msg: "Random string is: {{ var_random_string }}"
+
+    - name: Print variables
+      ansible.builtin.debug:  
+        msg:
+          SITE_ID: "{{ group_names[0] }}"
+          INVENTORY HOSTNAME: "{{ inventory_hostname }}"
+          RANDOM STRING: "{{ var_random_string }}"
+
+    - name: Add network device to ISE
+      ansible.builtin.uri:
+        url: "https://10.12.0.98:9060/ers/config/networkdevice"
+        user: "{{ ise_username }}"
+        password: "{{ ise_password }}"
+        method: POST
+        return_content: true
+        validate_certs: no
+        headers:
+          Accept: application/json
+          Content-Type: application/json
+          User-Agent: Ansible-Playbook
+        body: |
+          {
+            "NetworkDevice": {
+              "name": "{{ inventory_hostname }}",
+              "description": "Added via Ansible",
+              "NetworkDeviceIPList": [
+                {
+                  "ipaddress": "{{ ansible_host }}",
+                  "mask": 32
+                }
+              ],
+              "tacacsSettings": {
+                "sharedSecret": "{{ var_random_string }}",
+                "connectModeOptions": "ON_LEGACY"
+              }
+            }
+          }
+        status_code: [200, 201, 400]
+      register: ise_new_device_response
+
+    - name: ERROR HANDLING
+      # ansible.builtin.fail:
+      ansible.builtin.debug:
+        msg: 
+          - "ADD NETWORK DEVICE TO ISE ERROR!"
+          - "{{ ise_new_device_response.json }}"
+      when: ise_new_device_response.status == 400

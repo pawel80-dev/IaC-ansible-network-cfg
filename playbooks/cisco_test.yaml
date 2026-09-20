@@ -5,14 +5,13 @@
   gather_facts: false
 
   tasks:
-
     - name: Print variables
       ansible.builtin.debug:  
         msg:
           SITE_ID: "{{ group_names[0] }}"
           INVENTORY HOSTNAME: "{{ inventory_hostname }}"
           SOME VAR: "{{ some_var }}"
-          TACACS SOURCE: "{{ tacacs_source | default('NOT Defined') }}"
+          TACACS SOURCE: "{{ tacacs_source | default('Source interface not defined') }}"
 
     - name: Generate a random string with 1 lower, 1 upper, 1 number and 1 special char (at least), length 12
       set_fact:
