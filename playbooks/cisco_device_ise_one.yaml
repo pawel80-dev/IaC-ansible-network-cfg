@@ -72,7 +72,6 @@
         privilege: 15
         password_type: secret
         state: present
-      when: test_local_user is not defined
 
     - name: Add TACACS+
       cisco.ios.ios_config:
