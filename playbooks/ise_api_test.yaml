@@ -65,7 +65,7 @@
 
     - name: Error handling
       ansible.builtin.debug:
-        msg: "Adding NEW device error!"
+        msg: Add network device to ISE error!: {{ ise_new_device_response.json }}
       when: ise_new_device_response.status == 400
 
     - name: Show response status
