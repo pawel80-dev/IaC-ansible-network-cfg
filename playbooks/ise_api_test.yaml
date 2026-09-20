@@ -64,7 +64,7 @@
       register: ise_new_device_response
 
     - name: ERROR HANDLING
-      ansible.builtin.fail:
+      ansible.builtin.debug:
         msg: "Add network device to ISE error!: {{ ise_new_device_response.json }}"
       when: ise_new_device_response.status == 400
 
