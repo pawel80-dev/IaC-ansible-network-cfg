@@ -60,6 +60,7 @@
               }
             }
           }
+        status_code: [200, 201]
       register: ise_new_device_response
 
     - name: Show response status
