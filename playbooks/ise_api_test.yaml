@@ -3,7 +3,7 @@
   gather_facts: false
 
   tasks:
-    - name: Call local Cisco ISE API
+    - name: ISE devices GET request
       ansible.builtin.uri:
         url: "https://10.12.0.98:9060/ers/config/networkdevice"
         user: "ersadmin"
@@ -13,10 +13,11 @@
         validate_certs: no
         headers:
           Accept: application/json
+          Content-Type: application/json
           User-Agent: Ansible-Playbook
-      register: ise_response
+      register: ise_devices_response
 
-    - name: Device API call
+    - name: ISE specific device GET request
       ansible.builtin.uri:
         url: "https://10.12.0.98:9060/ers/config/networkdevice/name/RT2_IOSv"
         user: "ersadmin"
@@ -26,15 +27,45 @@
         validate_certs: no
         headers:
           Accept: application/json
+          Content-Type: application/json
           User-Agent: Ansible-Playbook
       register: ise_device_response
+
+    - name: Add network device to ISE
+      ansible.builtin.uri:
+        url: "https://10.12.0.98:9060/ers/config/networkdevice"
+        user: "ersadmin"
+        password: "Cisco123"
+        method: POST
+        return_content: true
+        validate_certs: no
+        headers:
+          Accept: application/json
+          Content-Type: application/json
+          User-Agent: Ansible-Playbook
+        body: |
+          {
+            "NetworkDevice": {
+              "name": "RT1_IOSv",
+              "description": "Added via Ansible",
+              "authenticationSettings": {
+                "radiusSharedSecret": "YourSecureRadiusSecret123"
+              },
+              "NetworkDeviceIPList": [
+                {
+                  "ipaddress": "10.12.12.11"
+                }
+              ]
+            }
+          }
+      register: ise_new_device_response
 
     - name: Show response status
       ansible.builtin.debug:
         msg: 
-          General response status: "{{ ise_response.status }}"
-          Device response status: "{{ ise_device_response.status }}"
-          Device response: "{{ ise_device_response.json }}"
+          General response status: "{{ ise_devices_response.status }}"
+          Specific device response status: "{{ ise_device_response.status }}"
+          New device response: "{{ ise_new_device_response.json }}"
 
     # - name: Access parsed JSON data
     #   ansible.builtin.debug:
