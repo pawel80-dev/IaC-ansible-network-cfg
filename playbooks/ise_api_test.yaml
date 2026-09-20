@@ -9,6 +9,7 @@
         url: "https://10.12.0.98:9060/ers/config/networkdevice"
         method: GET
         return_content: true
+        validate_certs: no
         headers:
           Accept: application/json
           User-Agent: Ansible-Playbook
