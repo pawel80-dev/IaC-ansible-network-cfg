@@ -65,13 +65,18 @@
           RANDOM STRING: "{{ var_random_string }}"
           TACACS SOURCE: "{{ tacacs_source | default('Source interface not defined') }}"
 
+    # - name: Create a new user
+    #   cisco.ios.ios_user:
+    #     name: test_local_user
+    #     configured_password: Test123
+    #     privilege: 15
+    #     password_type: secret
+    #     state: present
+
     - name: Create a new user
-      cisco.ios.ios_user:
-        name: test_local_user
-        configured_password: Test123
-        privilege: 15
-        password_type: secret
-        state: present
+      cisco.ios.ios_config:
+        lines:
+          - username local_test_user privilege 15 secret Test123
 
     - name: Add TACACS+
       cisco.ios.ios_config:
