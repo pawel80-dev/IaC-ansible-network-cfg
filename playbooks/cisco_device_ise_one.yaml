@@ -39,7 +39,7 @@
                 }
               ],
               "tacacsSettings": {
-                "sharedSecret": "{{ var_random_string }}",
+                "sharedSecret": "dsgfdg353453",
                 "connectModeOptions": "ON_LEGACY"
               }
             }
