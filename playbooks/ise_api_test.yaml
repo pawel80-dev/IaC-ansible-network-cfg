@@ -48,9 +48,6 @@
             "NetworkDevice": {
               "name": "RT1_IOSv",
               "description": "Added via Ansible",
-              # "authenticationSettings": {
-              #   "radiusSharedSecret": "YourSecureRadiusSecret123"
-              # },
               "NetworkDeviceIPList": [
                 {
                   "ipaddress": "10.12.12.11",
