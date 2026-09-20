@@ -50,7 +50,7 @@
               "description": "Added via Ansible",
               "NetworkDeviceIPList": [
                 {
-                  "ipaddress": "10.12.12.11",
+                  "ipaddress": "192.168.12.11",
                   "mask": 32
                 }
               ],
