@@ -21,9 +21,9 @@
       ansible.builtin.debug:
         msg: "Status: {{ ise_response.status }}, Content-Type: {{ ise_response.content_type }}"
 
-    - name: Access parsed JSON data
-      ansible.builtin.debug:
-        msg:
-          name: "{{ ise_response.json.full_name }}"
-          stars: "{{ ise_response.json.stargazers_count }}"
-          language: "{{ ise_response.json.language }}"
+    # - name: Access parsed JSON data
+    #   ansible.builtin.debug:
+    #     msg:
+    #       name: "{{ ise_response.json.full_name }}"
+    #       stars: "{{ ise_response.json.stargazers_count }}"
+    #       language: "{{ ise_response.json.language }}"
