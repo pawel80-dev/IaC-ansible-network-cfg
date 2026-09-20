@@ -7,8 +7,8 @@
       ansible.builtin.uri:
         # url: "https://api.github.com/repos/ansible/ansible"
         url: "https://10.12.0.98:9060/ers/config/networkdevice"
-        user: "{{ ise_api_user }}"
-        password: "{{ ise_api_pass }}"
+        user: "ersadmin"
+        password: "Cisco123"
         method: GET
         return_content: true
         validate_certs: no
