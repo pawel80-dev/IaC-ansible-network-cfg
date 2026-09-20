@@ -68,4 +68,4 @@
         msg: 
           General response status: "{{ ise_devices_response.status }}"
           Specific device response status: "{{ ise_device_response.status }}"
-          New device response: "{{ ise_new_device_response.json }}"
+          New device response: "{{ ise_new_device_response.status }}"
