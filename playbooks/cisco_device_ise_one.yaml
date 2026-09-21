@@ -10,6 +10,20 @@
       vars:
         special_list: "!@#$%^&*()-_+=[]{}:./"
 
+    - name: Check if device already exists in ISE
+      ansible.builtin.uri:
+        url: "https://10.12.0.98:9060/ers/config/networkdevice/name/{{ inventory_hostname }}"
+        user: "{{ ise_username }}"
+        password: "{{ ise_password }}"
+        method: GET
+        return_content: true
+        validate_certs: no
+        headers:
+          Accept: application/json
+          Content-Type: application/json
+          User-Agent: Ansible-Playbook
+      register: ise_device_status
+
     - name: Add network device to ISE
       ansible.builtin.uri:
         url: "https://10.12.0.98:9060/ers/config/networkdevice"
@@ -114,3 +128,8 @@
     - name: Save running config to startup config (when modified)
       cisco.ios.ios_config:
         save_when: modified
+
+
+# TODO
+- do not add device if it already exists in ISE
+- do not add username if it already exists on device
