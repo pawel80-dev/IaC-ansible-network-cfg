@@ -69,7 +69,7 @@
           }
         status_code: [201, 400]
       register: ise_new_device_response
-      when: ise_device_status.status != 200
+      when: not device_exists
 
     - name: ERROR HANDLING
       # ansible.builtin.fail:
