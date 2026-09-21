@@ -74,7 +74,6 @@
       ansible.builtin.debug:  
         msg:
           ISE DEVICE STATUS: "{{ ise_device_status.status }}"
-          ISE NEW DEVICE STATUS: "{{ ise_new_device_response.status }}"
           SITE_ID: "{{ group_names[0] }}"
           INVENTORY HOSTNAME: "{{ inventory_hostname }}"
           # RANDOM STRING: "{{ hostvars[inventory_hostname].var_random_string }}"
