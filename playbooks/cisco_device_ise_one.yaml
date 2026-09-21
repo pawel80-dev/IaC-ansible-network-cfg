@@ -61,7 +61,7 @@
       ansible.builtin.debug:
         msg: 
           - "ADD NETWORK DEVICE TO ISE ERROR!"
-          - "{{ ise_new_device_response.json }}"
+          - "{{ ise_new_device_response }}"
 
 - name: Add AAA config to device
   hosts: all
