@@ -33,14 +33,14 @@
         msg: "Device {{ inventory_hostname }} already exists in ISE."
       when: device_exists
 
-    - name: Extract and display TACACS Shared Secret
-      ansible.builtin.set_fact:
-        tacacs_secret: "{{ ise_device_status.json.SearchResult.resources[0].tacacsOptions.sharedSecret }}"
-      when: device_exists
+    # - name: Extract and display TACACS Shared Secret
+    #   ansible.builtin.set_fact:
+    #     tacacs_secret: "{{ ise_device_status.json.SearchResult.resources[0].tacacsOptions.sharedSecret }}"
+    #   when: device_exists
 
-    - name: Print TACACS String
-      ansible.builtin.debug:
-        msg: "The TACACS shared secret for {{ inventory_hostname }} is: {{ tacacs_secret }}"
+    # - name: Print TACACS String
+    #   ansible.builtin.debug:
+    #     msg: "The TACACS shared secret for {{ inventory_hostname }} is: {{ tacacs_secret }}"
 
     - name: Show status if device does not exist
       ansible.builtin.debug:
@@ -96,6 +96,7 @@
     - name: Print variables
       ansible.builtin.debug:  
         msg:
+          DEVICE DATA: "{{ ise_device_status.json }}"
           SITE_ID: "{{ group_names[0] }}"
           INVENTORY HOSTNAME: "{{ inventory_hostname }}"
           # RANDOM STRING: "{{ hostvars[inventory_hostname].var_random_string }}"
