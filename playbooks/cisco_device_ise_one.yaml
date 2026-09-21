@@ -53,7 +53,7 @@
               }
             }
           }
-        status_code: [200, 201, 400]
+        status_code: [201, 400]
       register: ise_new_device_response
       when: ise_device_status.status != 200
 
@@ -63,7 +63,7 @@
         msg: 
           - "ADD NETWORK DEVICE TO ISE ERROR!"
           - "{{ ise_new_device_response }}"
-      when: ise_new_device_response.status == 400
+      # when: ise_new_device_response.status == 400
 
 - name: Add AAA config to device
   hosts: all
@@ -74,6 +74,7 @@
       ansible.builtin.debug:  
         msg:
           ISE DEVICE STATUS: "{{ ise_device_status.status }}"
+          ISE NEW DEVICE STATUS: "{{ ise_new_device_response.status }}"
           SITE_ID: "{{ group_names[0] }}"
           INVENTORY HOSTNAME: "{{ inventory_hostname }}"
           # RANDOM STRING: "{{ hostvars[inventory_hostname].var_random_string }}"
