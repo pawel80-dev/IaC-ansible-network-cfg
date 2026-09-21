@@ -55,6 +55,7 @@
           }
         status_code: [200, 201, 400]
       register: ise_new_device_response
+      when: ise_device_status != 200
 
     - name: ERROR HANDLING
       # ansible.builtin.fail:
