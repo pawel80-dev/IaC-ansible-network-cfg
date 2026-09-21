@@ -24,6 +24,20 @@
           User-Agent: Ansible-Playbook
       register: ise_device_status
 
+    - name: Set existence fact
+      ansible.builtin.set_fact:
+        device_exists: "{{ ise_device_status.SearchResult.resources | length > 0 }}"
+
+    - name: Show status if device exists
+      ansible.builtin.debug:
+        msg: "Device {{ inventory_hostname }} already exists in ISE."
+      when: device_exists
+
+    - name: Show status if device does not exist
+      ansible.builtin.debug:
+        msg: "Device {{ inventory_hostname }} does not exist in ISE."
+      when: not device_exists
+
     - name: Add network device to ISE
       ansible.builtin.uri:
         url: "https://10.12.0.98:9060/ers/config/networkdevice"
