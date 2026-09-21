@@ -77,7 +77,7 @@
         msg: 
           - "ADD NETWORK DEVICE TO ISE ERROR!"
           - "{{ ise_new_device_response }}"
-      when: ise_new_device_response.status == 400
+      # when: ise_new_device_response.status == 400
 
 - name: Add AAA config to device
   hosts: all
