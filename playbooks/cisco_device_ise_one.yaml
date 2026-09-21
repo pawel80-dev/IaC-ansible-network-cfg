@@ -110,7 +110,7 @@
     - name: Print variables
       ansible.builtin.debug:  
         msg:
-          DEVICE DATA: "{{ ise_device_data.json }}"
+          # DEVICE DATA: "{{ ise_device_data.json }}"
           SITE_ID: "{{ group_names[0] }}"
           INVENTORY HOSTNAME: "{{ inventory_hostname }}"
           # RANDOM STRING: "{{ hostvars[inventory_hostname].var_random_string }}"
