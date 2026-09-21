@@ -24,6 +24,20 @@
           User-Agent: Ansible-Playbook
       register: ise_device_status
 
+    - name: Check if device already exists in ISE
+      ansible.builtin.uri:
+        url: "https://10.12.0.98:9060/ers/config/networkdevice/name/{{ inventory_hostname }}"
+        user: "{{ ise_username }}"
+        password: "{{ ise_password }}"
+        method: GET
+        return_content: true
+        validate_certs: no
+        headers:
+          Accept: application/json
+          Content-Type: application/json
+          User-Agent: Ansible-Playbook
+      register: ise_device_data
+
     - name: Set existence fact
       ansible.builtin.set_fact:
         device_exists: "{{ ise_device_status.json.SearchResult.resources | length > 0 }}"
@@ -96,7 +110,7 @@
     - name: Print variables
       ansible.builtin.debug:  
         msg:
-          DEVICE DATA: "{{ ise_device_status.json }}"
+          DEVICE DATA: "{{ ise_device_data.json }}"
           SITE_ID: "{{ group_names[0] }}"
           INVENTORY HOSTNAME: "{{ inventory_hostname }}"
           # RANDOM STRING: "{{ hostvars[inventory_hostname].var_random_string }}"
