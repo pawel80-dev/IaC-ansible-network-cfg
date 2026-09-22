@@ -96,12 +96,12 @@
       register: ise_new_device_response
       when: not device_exists
 
-    - name: ERROR HANDLING
-      # ansible.builtin.fail:
-      ansible.builtin.debug:
-        msg: 
-          - "ADD NETWORK DEVICE TO ISE ERROR!"
-          - "{{ ise_new_device_response }}"
+    # - name: ERROR HANDLING
+    #   # ansible.builtin.fail:
+    #   ansible.builtin.debug:
+    #     msg: 
+    #       - "ADD NETWORK DEVICE TO ISE ERROR!"
+    #       - "{{ ise_new_device_response }}"
       # when: ise_new_device_response.status == 400
 
 - name: Add AAA config to device
