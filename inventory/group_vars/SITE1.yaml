@@ -1,2 +1,2 @@
 ---
-tacacs_source: "GigabitEthernet0/0"
+tacacs_source: "GigabitEthernet1"
