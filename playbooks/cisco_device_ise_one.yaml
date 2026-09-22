@@ -136,7 +136,7 @@
           - aaa group server tacacs+ AAA_SERVERS
           - server-private 192.168.12.98 key {{ tacacs_secret }}
           # - ip tacacs source-interface {{ tacacs_source }}
-        when: tacacs_secret is defined
+      when: tacacs_secret is defined
 
     - name: Add TACACS+ source interface (if defined)
       cisco.ios.ios_config: ip tacacs source-interface {{ tacacs_source }}
