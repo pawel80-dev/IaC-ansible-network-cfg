@@ -134,7 +134,7 @@
       cisco.ios.ios_config:
         lines:
           - server-private 192.168.12.98 key {{ tacacs_secret }}
-      parents: aaa group server tacacs+ AAA_SERVERS
+        parents: aaa group server tacacs+ AAA_SERVERS
       when: tacacs_secret is defined
 
     - name: Add TACACS+ server if device was not defined in ISE (new device added)
