@@ -56,6 +56,7 @@
     - name: Print TACACS String
       ansible.builtin.debug:
         msg: "The TACACS shared secret for {{ inventory_hostname }} is: {{ tacacs_secret }}"
+      when: device_exists
 
     - name: Show status if device does not exist
       ansible.builtin.debug:
