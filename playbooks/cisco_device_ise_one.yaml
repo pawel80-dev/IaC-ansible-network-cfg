@@ -38,7 +38,7 @@
           User-Agent: Ansible-Playbook
       register: ise_device_data
 
-    - name: Set existence fact
+    - name: API response filter for device existence check
       ansible.builtin.set_fact:
         device_exists: "{{ ise_device_status.json.SearchResult.resources | length > 0 }}"
 
