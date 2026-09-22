@@ -36,6 +36,7 @@
           Accept: application/json
           Content-Type: application/json
           User-Agent: Ansible-Playbook
+        status_code: [200, 500]
       register: ise_device_data
 
     - name: API response filter for device existence check
