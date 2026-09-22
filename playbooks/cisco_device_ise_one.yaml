@@ -144,12 +144,17 @@
           - server-private 192.168.12.98 key {{ var_random_string }}
       when: not device_exists
 
-    - name: Add TACACS+ source interface (if defined)
+    - name: Add TACACS+ source interface (if defined) global config
       cisco.ios.ios_config: 
         lines:
           - ip tacacs source-interface {{ tacacs_source }}
-          - aaa group server tacacs+ AAA_SERVERS
+      when: tacacs_source is defined
+
+    - name: Add TACACS+ source interface (if defined) AAA group
+      cisco.ios.ios_config: 
+        lines:
           - ip tacacs source-interface {{ tacacs_source }}
+        parents: aaa group server tacacs+ AAA_SERVERS
       when: tacacs_source is defined
 
     - name: Add AAA
