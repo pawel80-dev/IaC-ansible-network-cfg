@@ -130,12 +130,12 @@
         lines:
           - username local_test_user privilege 15 secret Test123
 
-    # - name: Add TACACS+ server if TACACS secret is defined
-    #   cisco.ios.ios_config:
-    #     lines:
-    #       - aaa group server tacacs+ AAA_SERVERS
-    #       - server-private 192.168.12.98 key {{ tacacs_secret }}
-    #   when: tacacs_secret is defined
+    - name: Add TACACS+ server if TACACS secret is defined
+      cisco.ios.ios_config:
+        lines:
+          - aaa group server tacacs+ AAA_SERVERS
+          - server-private 192.168.12.98 key {{ tacacs_secret }}
+      when: tacacs_secret is defined
 
     - name: Add TACACS+ server if device was not defined in ISE (new device added)
       cisco.ios.ios_config:
