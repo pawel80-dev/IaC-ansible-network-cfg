@@ -140,8 +140,8 @@
     - name: Add TACACS+ server if device was not defined in ISE (new device added)
       cisco.ios.ios_config:
         lines:
-          - aaa group server tacacs+ AAA_SERVERS
           - server-private 192.168.12.98 key {{ var_random_string }}
+        parents: aaa group server tacacs+ AAA_SERVERS
       when: not device_exists
 
     - name: Add TACACS+ source interface (if defined) global config
