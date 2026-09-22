@@ -125,10 +125,10 @@
     #     password_type: secret
     #     state: present
 
-    # - name: Create a new user
-    #   cisco.ios.ios_config:
-    #     lines:
-    #       - username local_test_user privilege 15 secret Test123
+    - name: Create a new user
+      cisco.ios.ios_config:
+        lines:
+          - username local_test_user privilege 15 secret Test123
 
     # - name: Add TACACS+ server if TACACS secret is defined
     #   cisco.ios.ios_config:
